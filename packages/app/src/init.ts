@@ -63,7 +63,7 @@ const appCtx: AppContext<Config> = {
   ctx,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-confusing-void-expression
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 let state = app.init(appCtx) ?? null;
 const statefulCtx: StatefulAppContext<Config, typeof state> = {
   ...appCtx,
