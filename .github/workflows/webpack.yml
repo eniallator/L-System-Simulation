@@ -13,7 +13,23 @@ jobs:
       - name: Build bundle
         env:
           NODE_ENV: production
-        run: yarn prepublish
+        run: |
+          yarn core build
+          echo "Built core"
+          yarn linalg build
+          echo "Built linalg"
+          yarn prof build
+          echo "Built prof"
+          yarn conf build
+          echo "Built conf"
+          yarn app build
+          echo "Built app"
+          yarn typecheck
+          echo "Type checked"
+          yarn lint
+          echo "linted"
+          yarn test --run --reporter=verbose
+          echo "tested"
       - name: Deploy
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
