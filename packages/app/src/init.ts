@@ -30,7 +30,7 @@ dom.addListener(dom.get("#download-btn"), "click", () => {
 
   document.body.appendChild(anchor);
   anchor.click();
-  anchor.remove();
+  document.body.removeChild(anchor);
 });
 
 dom.addListener(dom.get("#fullscreen-btn"), "click", () => {
@@ -63,8 +63,7 @@ const appCtx: AppContext<Config> = {
   ctx,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-let state = app.init(appCtx) ?? null;
+let state = app.init(appCtx) ?? null; // eslint-disable-line
 const statefulCtx: StatefulAppContext<Config, typeof state> = {
   ...appCtx,
   getState: () => state,
