@@ -28,8 +28,16 @@ jobs:
           echo "Type checked"
           yarn lint
           echo "linted"
-          yarn test --run --reporter=verbose
-          echo "tested"
+          yarn core test --run --reporter=verbose
+          echo "Tested core"
+          yarn linalg test --run --reporter=verbose
+          echo "Tested linalg"
+          yarn prof test --run --reporter=verbose
+          echo "Tested prof"
+          yarn conf test --run --reporter=verbose
+          echo "Tested conf"
+          yarn app test --run --reporter=verbose
+          echo "Tested app"
       - name: Deploy
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

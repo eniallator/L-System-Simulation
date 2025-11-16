@@ -2,8 +2,8 @@ import { Vector } from "@web-art/linear-algebra";
 
 import { appMethods } from "./lib/index.ts";
 import { drawLSystem, generate, initialLSystemState } from "./lSystem/index.ts";
+import { acaciaTree } from "./lSystemConfigs/acaciaTree.ts";
 import { bush } from "./lSystemConfigs/bush.ts";
-import { oakTree } from "./lSystemConfigs/oakTree.ts";
 import { path } from "./lSystemConfigs/path.ts";
 import { pineTree } from "./lSystemConfigs/pineTree.ts";
 import { sun } from "./lSystemConfigs/sun.ts";
@@ -31,7 +31,7 @@ const sceneConfigs: LSystemConfig<AppCtx>[] = [
     iterationDuration: 2,
   },
   {
-    ...oakTree,
+    ...acaciaTree,
     startPos: dimensions =>
       Vector.create(dimensions.x() / 5, (dimensions.y() * 5) / 6),
     iterationDuration: 2.5,
@@ -155,14 +155,7 @@ const animationFrame = (
 };
 
 export const app = appMethods<Config, LSystemScene<AppCtx>>({
-  init({ canvas, ctx, time }: AppContext<Config>): LSystemScene<AppCtx> {
-    ctx.fillStyle = "black";
-    ctx.strokeStyle = "white";
-
-    // Art code
-
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+  init({ time }: AppContext<Config>): LSystemScene<AppCtx> {
     return {
       lSystems: sceneConfigs.map(config => ({
         config,
