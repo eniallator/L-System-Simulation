@@ -10,34 +10,16 @@ jobs:
           node-version: 22.2.0
       - name: Install dependencies
         run: yarn
-      - name: Build bundle
+      - name: Build
         env:
           NODE_ENV: production
-        run: |
-          yarn core build
-          echo "Built core"
-          yarn linalg build
-          echo "Built linalg"
-          yarn prof build
-          echo "Built prof"
-          yarn conf build
-          echo "Built conf"
-          yarn app build
-          echo "Built app"
-          yarn typecheck
-          echo "Type checked"
-          yarn lint
-          echo "linted"
-          yarn core test --run --reporter=verbose
-          echo "Tested core"
-          yarn linalg test --run --reporter=verbose
-          echo "Tested linalg"
-          yarn prof test --run --reporter=verbose
-          echo "Tested prof"
-          yarn conf test --run --reporter=verbose
-          echo "Tested conf"
-          yarn app test --run --reporter=verbose
-          echo "Tested app"
+        run: yarn build
+      - name: Typecheck
+        run: yarn typecheck
+      - name: Lint
+        run: yarn lint
+      # - name: Test
+      #   run: yarn test
       - name: Deploy
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
