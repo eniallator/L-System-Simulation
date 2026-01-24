@@ -35,7 +35,6 @@ export default function config(rootDir, extra = {}) {
         "@stylistic/indent": "off",
         "@stylistic/generator-star-spacing": "off",
         "@stylistic/quotes": "off",
-        "@stylistic/indent-binary-ops": "off",
         "@stylistic/quote-props": "off",
         "@stylistic/operator-linebreak": "off",
         // CORE
