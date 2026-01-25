@@ -51,6 +51,6 @@
     "lint": "eslint ./src/**/*.ts",
     "findissues": "yarn typecheck && yarn lint",
     "prepublish": "yarn build && yarn typecheck && yarn lint",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public --no-history"
   }
 }
