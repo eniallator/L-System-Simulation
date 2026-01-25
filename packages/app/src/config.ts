@@ -5,14 +5,10 @@ import type {
   ParamConfigOptions,
 } from "@web-art/config-parser";
 
-export const options: ParamConfigOptions = { shortUrl: false };
+export const options: ParamConfigOptions = { query: location.search };
 export const config = createParsers({
   axiom: textParser({ label: "Axiom", default: "" }),
-  rules: textParser({
-    label: "Rules",
-    default: "",
-    area: true,
-  }),
+  rules: textParser({ label: "Rules", default: "", area: true }),
 });
 
 export type Config =
